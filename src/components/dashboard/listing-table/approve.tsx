@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
   Tooltip,
   TooltipContent,
@@ -9,6 +9,9 @@ import { Check } from "lucide-react";
 import { useListings } from "@/context/listing-context";
 const Approve = ({ id, disable }: { id: number; disable: boolean }) => {
   const { updateListingStatus } = useListings();
+  const handleApprove = useCallback(() => {
+    updateListingStatus(id, "success");
+  }, [id]);
 
   return (
     <Tooltip>
@@ -17,7 +20,7 @@ const Approve = ({ id, disable }: { id: number; disable: boolean }) => {
           size={"icon"}
           className="bg-green-400"
           disabled={disable}
-          onClick={() => updateListingStatus(id, "success")}>
+          onClick={handleApprove}>
           <Check />
         </Button>
       </TooltipTrigger>
