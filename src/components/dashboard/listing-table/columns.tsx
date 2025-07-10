@@ -6,20 +6,9 @@ import { ArrowUpDown } from "lucide-react";
 import Approve from "./approve";
 import { EditModal } from "./edit-modal";
 import Reject from "./reject";
+import { Listing } from "@/context/listing-context";
 
-export type ColListing = {
-  id: number;
-  title: string;
-  description: string;
-  location: string;
-  pricePerDay: number;
-  submittedBy: string;
-  status: "pending" | "rejected" | "success";
-  createdAt: Date;
-  updatedAt: Date;
-};
-
-export const columns: ColumnDef<ColListing>[] = [
+export const columns: ColumnDef<Listing>[] = [
   {
     accessorKey: "id",
     header: "#",

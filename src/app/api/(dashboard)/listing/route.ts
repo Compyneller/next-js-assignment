@@ -2,7 +2,7 @@ import { prisma } from "@/db/db.config";
 import { verifyTokenSession } from "@/lib/verify-token";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req : NextRequest){
+export async function POST(){
     try {
 
          await prisma.listing.createMany({

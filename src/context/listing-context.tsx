@@ -9,6 +9,9 @@ export type Listing = {
   description: string;
   location: string;
   pricePerDay: number;
+  userId: number;
+  createdAt: string;
+  updatedAt: string;
   submittedBy: string;
   status: string;
 };

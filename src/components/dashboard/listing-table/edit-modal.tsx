@@ -16,13 +16,12 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useListings } from "@/context/listing-context";
+import { Listing, useListings } from "@/context/listing-context";
 import { Edit } from "lucide-react";
 import { useState } from "react";
-import { ColListing } from "./columns";
 import toast from "react-hot-toast";
 
-export function EditModal({ data }: { data: ColListing }) {
+export function EditModal({ data }: { data: Listing }) {
   const [open, setOpen] = useState(false);
   const { updateList } = useListings();
 

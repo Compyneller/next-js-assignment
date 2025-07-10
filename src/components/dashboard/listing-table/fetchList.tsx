@@ -1,8 +1,8 @@
 "use client";
 import { useListings } from "@/context/listing-context";
+import { useMemo } from "react";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
-import { useMemo } from "react";
 
 const List = () => {
   const { listings } = useListings();

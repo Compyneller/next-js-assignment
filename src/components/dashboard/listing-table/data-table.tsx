@@ -2,23 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  SortingState,
-  useReactTable,
-  VisibilityState,
-  getFilteredRowModel,
-} from "@tanstack/react-table";
-import { Input } from "@/components/ui/input";
-import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -27,7 +16,18 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import React, { useState, useMemo } from "react";
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  SortingState,
+  useReactTable,
+  VisibilityState,
+} from "@tanstack/react-table";
+import React, { useState } from "react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -75,13 +75,12 @@ export function DataTable<TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
   });
 
-  // Memoized Table Row Component
   const MemoizedRow = React.memo(
-    ({
+    function MemoizedRowComponent({
       row,
     }: {
       row: ReturnType<typeof table.getRowModel>["rows"][number];
-    }) => {
+    }) {
       return (
         <TableRow data-state={row.getIsSelected() && "selected"}>
           {row.getVisibleCells().map((cell) => (
